@@ -55,7 +55,9 @@
     {
       "name": "blueprint-compiler",
       "buildsystem": "meson",
-      "cleanup": ["*"],
+      "cleanup": [
+        "*"
+      ],
       "sources": [
         {
           "type": "git",
@@ -88,8 +90,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.0.0/jogger-1.0.0.tar.xz",
-          "sha256": "e4a30c7cea16fa2dbfc7157de5839a9f16e019b00866cc76a7968a49e6dc2da1"
+          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.0.1/jogger-1.0.1.tar.xz",
+          "sha256": "b6e0118e21cf72e5c4952364278c753f125c90adbb99b1745cbea0f85246d636"
         }
       ]
     }
