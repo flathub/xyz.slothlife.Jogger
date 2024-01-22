@@ -88,13 +88,13 @@
       "builddir": true,
       "buildsystem": "meson",
       "config-opts": [
-          "-Dbuildtype=release"
+        "-Dbuildtype=release"
       ],
       "sources": [
         {
           "type": "archive",
-          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.2.0/jogger-1.2.0.tar.xz",
-          "sha256": "d47575c295b47b3252b26d77c8bb6cf80a14073ab3f9421f84d56e6c765c266a"
+          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.2.1/jogger-1.2.1.tar.xz",
+          "sha256": "08f2adf4b621fabbf576cbf1f048dfabc1907eda98e5c64bcd80ab89d90f821e"
         }
       ]
     }
