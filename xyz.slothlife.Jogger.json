@@ -93,8 +93,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.2.3/jogger-1.2.3.tar.xz",
-          "sha256": "f1b98f63c83f19c4c56a95d199f97a9f75d1c0c9ff6a5793eaac2143ba5c3fd0"
+          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.2.4/jogger-1.2.4.tar.xz",
+          "sha256": "5c575b21a6e35cddb481573d8c79579af1f250af65ddc60ff082625f714f9fdb"
         }
       ]
     }
