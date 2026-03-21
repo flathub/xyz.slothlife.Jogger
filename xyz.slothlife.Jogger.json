@@ -1,7 +1,7 @@
 {
     "app-id" : "xyz.slothlife.Jogger",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "48",
+    "runtime-version" : "50",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable",
@@ -27,12 +27,10 @@
     },
     "cleanup" : [
         "/include",
+        "/lib/girepository-1.0",
         "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
-        "/share/man",
-        "/share/pkgconfig",
+        "/share/gir-1.0",
+        "/share/vim",
         "*.la",
         "*.a"
     ],
@@ -64,21 +62,6 @@
                     "type" : "archive",
                     "url" : "https://download.gnome.org/sources/libshumate/1.4/libshumate-1.4.0.tar.xz",
                     "sha256" : "3984368e0259862b3810d1ddc86d2dadd6d372a2b32376ccf4aff7c2e48c6d30"
-                }
-            ]
-        },
-        {
-            "name" : "blueprint-compiler",
-            "buildsystem" : "meson",
-            "cleanup" : [
-                "*"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag" : "v0.16.0",
-                    "commit" : "04ef0944db56ab01307a29aaa7303df6067cb3c0"
                 }
             ]
         },
