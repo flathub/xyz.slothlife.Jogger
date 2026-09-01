@@ -1,99 +1,92 @@
 {
-    "app-id" : "xyz.slothlife.Jogger",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "50",
-    "sdk" : "org.gnome.Sdk",
-    "sdk-extensions" : [
-        "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm20"
-    ],
-    "command" : "jogger",
-    "finish-args" : [
-        "--share=network",
-        "--share=ipc",
-        "--socket=fallback-x11",
-        "--device=dri",
-        "--socket=wayland",
-        "--socket=pulseaudio",
-        "--env=RUST_BACKTRACE=1"
-    ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin",
-        "env" : {
-            "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" : "sparse",
-            "RUST_BACKTRACE" : "1",
-            "RUST_LOG" : "jogger=debug"
+  "app-id": "xyz.slothlife.Jogger",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "50",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.rust-stable",
+    "org.freedesktop.Sdk.Extension.llvm22"
+  ],
+  "command": "jogger",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--device=dri",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--env=RUST_BACKTRACE=1"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm22/bin",
+    "env": {
+      "CARGO_REGISTRIES_CRATES_IO_PROTOCOL": "sparse",
+      "RUST_BACKTRACE": "1",
+      "RUST_LOG": "jogger=debug"
+    }
+  },
+  "cleanup": [
+    "/include",
+    "/lib/girepository-1.0",
+    "/lib/pkgconfig",
+    "/share/gir-1.0",
+    "/share/vim",
+    "*.la",
+    "*.a"
+  ],
+  "modules": [
+    {
+      "name": "protobuf-c",
+      "buildsystem": "autotools",
+      "config-opts": ["--disable-protoc"],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.1/protobuf-c-1.5.1.tar.gz",
+          "sha256": "20d1dc257da96f8ddff8be4dd9779215bbd0a6069ed53bbe9de38fa7629be06b"
         }
+      ]
     },
-    "cleanup" : [
-        "/include",
-        "/lib/girepository-1.0",
-        "/lib/pkgconfig",
-        "/share/gir-1.0",
-        "/share/vim",
-        "*.la",
-        "*.a"
-    ],
-    "modules" : [
+    {
+      "name": "libshumate",
+      "buildsystem": "meson",
+      "config-opts": ["-Dvapi=false", "-Dgtk_doc=false"],
+      "builddir": true,
+      "sources": [
         {
-            "name" : "protobuf-c",
-            "buildsystem" : "autotools",
-            "config-opts" : [
-                "--disable-protoc"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.1/protobuf-c-1.5.1.tar.gz",
-                    "sha256" : "20d1dc257da96f8ddff8be4dd9779215bbd0a6069ed53bbe9de38fa7629be06b"
-                }
-            ]
-        },
+          "type": "archive",
+          "url": "https://download.gnome.org/sources/libshumate/1.4/libshumate-1.4.0.tar.xz",
+          "sha256": "3984368e0259862b3810d1ddc86d2dadd6d372a2b32376ccf4aff7c2e48c6d30"
+        }
+      ]
+    },
+    {
+      "name": "espeak-ng",
+      "buildsystem": "autotools",
+      "no-parallel-make": true,
+      "build-options": {
+        "ldflags": "-Wl,--allow-multiple-definition"
+      },
+      "sources": [
         {
-            "name" : "libshumate",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dvapi=false",
-                "-Dgtk_doc=false"
-            ],
-            "builddir" : true,
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/libshumate/1.4/libshumate-1.4.0.tar.xz",
-                    "sha256" : "3984368e0259862b3810d1ddc86d2dadd6d372a2b32376ccf4aff7c2e48c6d30"
-                }
-            ]
-        },
-        {
-            "name" : "espeak-ng",
-            "buildsystem" : "autotools",
-            "no-parallel-make" : true,
-            "build-options" : {
-                "ldflags" : "-Wl,--allow-multiple-definition"
-            },
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://github.com/espeak-ng/espeak-ng.git",
-                    "tag" : "1.52.0",
-                    "commit" : "4870adfa25b1a32b4361592f1be8a40337c58d6c"
-                }
-            ]
-        },
+          "type": "git",
+          "url": "https://github.com/espeak-ng/espeak-ng.git",
+          "tag": "1.52.0",
+          "commit": "4870adfa25b1a32b4361592f1be8a40337c58d6c"
+        }
+      ]
+    },
 
     {
       "name": "jogger",
       "builddir": true,
       "buildsystem": "meson",
-      "config-opts": [
-        "-Dbuildtype=release"
-      ],
+      "config-opts": ["-Dbuildtype=release"],
       "sources": [
         {
           "type": "archive",
-          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.3.2/jogger-1.3.2.tar.xz",
-          "sha256": "fe55cf7af9a9abb35efb7a72a96b60ad1ceb38588cd54304755fc3153221973a"
+          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/1.4.0/jogger-1.4.0.tar.xz",
+          "sha256": "1a3aa5071d8b577f940c887bf7bbd8bd27f65ec390601579c72f0877292a2b62"
         }
       ]
     }
