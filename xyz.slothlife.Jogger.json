@@ -1,7 +1,7 @@
 {
   "app-id": "xyz.slothlife.Jogger",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "50",
+  "runtime-version": "51",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.rust-stable",
@@ -85,8 +85,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/2.1.0/jogger-2.1.0.tar.xz",
-          "sha256": "089c1c8cdc950f4976175a1ed582af04e45e6cef77208f040de2d29fb6085d7d"
+          "url": "https://codeberg.org/baarkerlounger/jogger/releases/download/2.2.0/jogger-2.2.0.tar.xz",
+          "sha256": "96a2c4ed1c99b2b8f4a3f0f0f29329c569bd1a05108eb8d602b212997eb16b76"
         }
       ]
     }
